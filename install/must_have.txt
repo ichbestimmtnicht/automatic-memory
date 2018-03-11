@@ -1,0 +1,52 @@
+#Netzwerk in /etc/wpa_supplicant/wpa_supplicant.conf
+network={
+    ssid="SSID"
+    psk="PASSWORD"
+}
+
+Lets say you want to add build/ folder in production brunch and ignore it in all other branch.
+
+1) Add it to your gitignore file.
+
+2) In production brunch , while doing git add , force add build folder git add -f --all build/
+
+unzip -p latest.zip | sudo dd of=/dev/sda status=progress bs=4M conv=fsync
+
+#LetsEncrypt Certbot - Apache
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt update
+sudo apt upgrade
+sudo apt install python-certbot-apache -y
+
+#Zim mit Plugins
+sudo apt install zim bzr git mercurial graphviz ditaa scrot dvipng python-zeitgeist r-base gnuplot lilypond python-gtkspellcheck -y
+
+#LAMP+PHPmyadmin Passwörter beachten!
+sudo apt install apache2 libapache2-mod-php7.0 php7.0 php7.0-mysql mysql-server phpmyadmin -y
+sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+sudo a2enconf phpmyadmin
+
+#Devilspie
+sudo apt install gdevilspie -y
+
+#Webmin
+sudo sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
+wget -qO - http://www.webmin.com/jcameron-key.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install webmin -y
+
+#Wordpress
+sudo -i
+cd /var/www
+wget https://de.wordpress.org/latest-de_DE.zip
+unzip latest-de_DE.zip
+rm latest-de_DE.zip
+cd /var/www/wordpress
+chown www-data:www-data -R *          
+find . -type d -exec chmod 755 {} \;  
+find . -type f -exec chmod 644 {} \;
+logout
+
+#NodeRed
+bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
+

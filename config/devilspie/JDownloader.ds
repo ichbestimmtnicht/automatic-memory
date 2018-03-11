@@ -1,0 +1,14 @@
+; generated_rule JDownloader
+( if 
+( begin 
+( contains ( application_name ) "JDownloader" )
+( contains ( window_name ) "JDownloader" )
+) 
+( begin 
+( maximize )
+( set_workspace 11 )
+( maximize_vertically )
+( maximize_horizontally )
+( println "match" )
+)
+)

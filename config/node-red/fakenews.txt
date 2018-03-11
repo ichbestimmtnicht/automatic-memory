@@ -1,0 +1,151 @@
+[
+    {
+        "id": "6e77c1e0.dd9ba8",
+        "type": "tab",
+        "label": "Fake-News to Twitter"
+    },
+    {
+        "id": "996f8567.27fe5",
+        "type": "http in",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "Start per URL http://pi-adresse:1880/pos",
+        "url": "/pos",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "18689828.e48e08"
+            ]
+        ]
+    },
+    {
+        "id": "fb10f43b.4115b8",
+        "type": "http response",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "Antwort des Webservers",
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b365ce06.eab428",
+        "type": "twitter out",
+        "z": "6e77c1e0.dd9ba8",
+        "twitter": "",
+        "name": "Tweet",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "18689828.e48e08",
+        "type": "function",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "Nachrichten Generator",
+        "func": "var conference=\"#TWUSB\";\nvar tstamp=(new Date).toISOString().replace(/t/gi,' ').trim();\n\nvar messages = [\n\t\"super Airline\",\n\t\"coole Flugzeuge\",\n\t\"neuer Beitrag\",\n\t\"neue guter Post\",\n\t\"begeisterter\",\n\t\"Hinweis\",\n\t\"guter Empfang\",\n\t\"gute Reichweite\",\n\t\"super Urlaub\",\n\t\"guter Hinweis\"\n];\n\t\nvar hashtags1 = [\n\t\"#eddv\",\n\t\"#haj\",\n\t\"#hanover\",\n\t\"#airways\",\n\t\"#cool\",\n\t\"#pi\",\n\t\"#wenzlaff.de\",\n\t\"#wenzlaff.info\",\n\t\"#kleinhirn.eu\",\n\t\"#bibelausstellung\",\n\t\"#hannover\",\n\t\"#arduino\",\n\t\"#programmierung\",\n\t\"#raspberry\"\n];\n\t\nvar hashtags2 = [\n\t\"#arduino\",\n\t\"#node-red\",\n\t\"#nodered\",\n\t\"#dump1090\",\n\t\"#flughafen\",\n\t\"#urlaub\",\n\t\"#radar\",\n\t\"#ADSB\",\n\t\"#HAJ\",\n\t\"#Hannover\",\n\t\"#RADAR\",\n\t\"#Langenhagen\",\n\t\"#Bild\",\n\t\"#kleinhirn\",\n\t\"#iot\"\n];\n\t\nvar message  = messages[Math.floor(Math.random() * messages.length)];\nvar hashtag1 = hashtags1[Math.floor(Math.random() * hashtags1.length)];\nvar hashtag2 = hashtags2[Math.floor(Math.random() * hashtags2.length)];\n\t\nmsg.payload=\"@twusb \"+conference+\" \"+message+\" \"+hashtag1+\" \"+hashtag2+\" \"+tstamp;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 200,
+        "wires": [
+            [
+                "fb10f43b.4115b8",
+                "b365ce06.eab428",
+                "d180bbfb.35c72"
+            ]
+        ]
+    },
+    {
+        "id": "d180bbfb.35c72",
+        "type": "debug",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "Debugging",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 651,
+        "y": 103,
+        "wires": []
+    },
+    {
+        "id": "916e41e9.692a78",
+        "type": "ui_button",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "",
+        "group": "c18727d3.1b7608",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "label": "Tweet auto. Nachricht nach TWUSB",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "18689828.e48e08"
+            ]
+        ]
+    },
+    {
+        "id": "7e383792.0f3438",
+        "type": "comment",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "Automatischer Fake-News Generator der twittert",
+        "info": "",
+        "x": 220,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9980ddd1.1d4f28",
+        "type": "inject",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "Stündlich",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "18689828.e48e08"
+            ]
+        ]
+    },
+    {
+        "id": "ac90e05e.8dc52",
+        "type": "comment",
+        "z": "6e77c1e0.dd9ba8",
+        "name": "www.wenzlaff.info",
+        "info": "",
+        "x": 630,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c18727d3.1b7608",
+        "type": "ui_group",
+        "z": "",
+        "name": "wenzlaff.info",
+        "tab": "a9e39ea1.b18f3",
+        "disp": false,
+        "width": "6"
+    },
+    {
+        "id": "a9e39ea1.b18f3",
+        "type": "ui_tab",
+        "z": "",
+        "name": "wenzlaff.info",
+        "icon": "dashboard"
+    }
+]

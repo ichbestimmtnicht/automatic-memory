@@ -1,0 +1,14 @@
+; generated_rule Thunderbird
+( if 
+( begin 
+( contains ( application_name ) "Thunderbird" )
+( contains ( window_name ) "Thunderbird" )
+) 
+( begin 
+( maximize )
+( set_workspace 4 )
+( maximize_vertically )
+( maximize_horizontally )
+( println "match" )
+)
+)

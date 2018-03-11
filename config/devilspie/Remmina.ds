@@ -1,0 +1,10 @@
+; generated_rule Remmina
+( if 
+( begin 
+( is ( application_name ) "Remmina" )
+( is ( window_name ) "Zugriff auf entfernte Arbeitsflächen" )
+) 
+( begin 
+( println "match" )
+)
+)

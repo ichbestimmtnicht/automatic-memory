@@ -1,0 +1,12 @@
+; generated_rule VNC Viewer
+( if 
+( begin 
+( contains ( application_name ) "VNC Viewer" )
+( contains ( window_name ) "VNC Viewer" )
+) 
+( begin 
+( maximize )
+( set_workspace 10 )
+( println "match" )
+)
+)

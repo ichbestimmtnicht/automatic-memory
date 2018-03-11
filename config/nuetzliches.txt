@@ -1,0 +1,11 @@
+#aiff zu wav oder mp3
+for f in *.aiff; do sox "$f" "${f%.aiff}.wav"; done
+
+#Debian Jessie Backports
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7638D0442B90D010
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B48AD6246925553
+echo 'deb http://httpredir.debian.org/debian stretch-backports main contrib non-free' | sudo tee -a /etc/apt/sources.list.d/stretch-backports.list
+sudo apt update
+
+#

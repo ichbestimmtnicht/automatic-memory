@@ -1,0 +1,627 @@
+[
+    {
+        "id": "8c82859.9402878",
+        "type": "rpi-sensehat in",
+        "z": "22ccfb82.977e24",
+        "name": "Joystick",
+        "motion": false,
+        "env": false,
+        "stick": true,
+        "x": 150,
+        "y": 40,
+        "wires": [
+            [
+                "b7ac123c.df05b8"
+            ]
+        ]
+    },
+    {
+        "id": "f8f65689.b84ab8",
+        "type": "file",
+        "z": "22ccfb82.977e24",
+        "name": "Log",
+        "filename": "/home/pi/sense-hat/SenseHatlog.log",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "x": 670,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8044ca02.a66d8",
+        "type": "rpi-sensehat in",
+        "z": "22ccfb82.977e24",
+        "name": "Bewegungssensoren",
+        "motion": true,
+        "env": false,
+        "stick": false,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "f670bf3b.72b8b"
+            ]
+        ]
+    },
+    {
+        "id": "d0e21771.64c2f",
+        "type": "rpi-sensehat in",
+        "z": "22ccfb82.977e24",
+        "name": "Umgebungssensoren",
+        "motion": false,
+        "env": true,
+        "stick": false,
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "1dcc9c2e.94e74c",
+                "cd894ab5.9e977",
+                "7355cef2.9b2438",
+                "ea2116dd.c812e"
+            ]
+        ]
+    },
+    {
+        "id": "dab72a96.91bd9",
+        "type": "inject",
+        "z": "22ccfb82.977e24",
+        "name": "",
+        "topic": "",
+        "payload": "Hier steht Text.",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 480,
+        "y": 360,
+        "wires": [
+            [
+                "4d5ff921.6962d"
+            ]
+        ]
+    },
+    {
+        "id": "4d5ff921.6962d",
+        "type": "play audio",
+        "z": "22ccfb82.977e24",
+        "name": "German Voice",
+        "voice": "27",
+        "x": 720,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b7ac123c.df05b8",
+        "type": "debug",
+        "z": "22ccfb82.977e24",
+        "name": "Debugkonsole",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 680,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "f670bf3b.72b8b",
+        "type": "delay",
+        "z": "22ccfb82.977e24",
+        "name": "Delay 1min",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "c571dedf.a902b8"
+            ]
+        ]
+    },
+    {
+        "id": "1dcc9c2e.94e74c",
+        "type": "delay",
+        "z": "22ccfb82.977e24",
+        "name": "Delay 1min",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "c571dedf.a902b8"
+            ]
+        ]
+    },
+    {
+        "id": "c571dedf.a902b8",
+        "type": "join",
+        "z": "22ccfb82.977e24",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "timeout": "",
+        "count": "2",
+        "x": 510,
+        "y": 140,
+        "wires": [
+            [
+                "b7ac123c.df05b8",
+                "f8f65689.b84ab8"
+            ]
+        ]
+    },
+    {
+        "id": "d4f54f1c.baf4d8",
+        "type": "ui_gauge",
+        "z": "22ccfb82.977e24",
+        "name": "Humidity",
+        "group": "1ceaa760.a70d79",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Luftfeuchtigkeit",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 660,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cd894ab5.9e977",
+        "type": "function",
+        "z": "22ccfb82.977e24",
+        "name": "Humidity",
+        "func": "var o =msg.payload\nmsg.payload = o.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "d4f54f1c.baf4d8",
+                "5d1399e9.33319"
+            ]
+        ]
+    },
+    {
+        "id": "5f4f1442.a0d564",
+        "type": "ui_gauge",
+        "z": "22ccfb82.977e24",
+        "name": "Temperatur",
+        "group": "8d1a5bea.8ea978",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "10",
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 670,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "7355cef2.9b2438",
+        "type": "function",
+        "z": "22ccfb82.977e24",
+        "name": "Temperatur",
+        "func": "var o =msg.payload\nmsg.payload = o.temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "5f4f1442.a0d564",
+                "9db1fa13.12c4f8"
+            ]
+        ]
+    },
+    {
+        "id": "578c2361.378bac",
+        "type": "ui_gauge",
+        "z": "22ccfb82.977e24",
+        "name": "Luftdruck",
+        "group": "8b39d558.5ebf78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Luftdruck",
+        "label": "hPa",
+        "format": "{{value}}",
+        "min": "900",
+        "max": "1100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 660,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ea2116dd.c812e",
+        "type": "function",
+        "z": "22ccfb82.977e24",
+        "name": "Luftdruck",
+        "func": "var o =msg.payload\nmsg.payload = o.pressure;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 220,
+        "wires": [
+            [
+                "578c2361.378bac",
+                "fd96e15.fe8c1a"
+            ]
+        ]
+    },
+    {
+        "id": "4c12bc4a.12aa5c",
+        "type": "inject",
+        "z": "22ccfb82.977e24",
+        "name": "1 Sekunde",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "5b3ef02b.4a5e8"
+            ]
+        ]
+    },
+    {
+        "id": "5b3ef02b.4a5e8",
+        "type": "exec",
+        "z": "22ccfb82.977e24",
+        "command": "vcgencmd measure_temp",
+        "addpay": false,
+        "append": "",
+        "useSpawn": false,
+        "timer": "",
+        "name": "CPU Temperatur",
+        "x": 250,
+        "y": 280,
+        "wires": [
+            [
+                "6f2df51e.98c48c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "5c842a13.0d302c",
+        "type": "ui_gauge",
+        "z": "22ccfb82.977e24",
+        "name": "Temperatur",
+        "group": "8d1a5bea.8ea978",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "CPU Temperatur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "90",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6f2df51e.98c48c",
+        "type": "function",
+        "z": "22ccfb82.977e24",
+        "name": "Zahl extrahieren",
+        "func": "str = msg.payload\nmsg.payload = str.substring(5, 9);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "5c842a13.0d302c",
+                "c7a1dfe1.738688"
+            ]
+        ]
+    },
+    {
+        "id": "c5411316.349e1",
+        "type": "exec",
+        "z": "22ccfb82.977e24",
+        "command": "python /home/pi/NOOBS/config/sense-hat/uhr_b.py",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Digitaluhr",
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8f870e81.e79c58",
+        "type": "inject",
+        "z": "22ccfb82.977e24",
+        "name": "1h Restart",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "c5411316.349e1"
+            ]
+        ]
+    },
+    {
+        "id": "5d1399e9.33319",
+        "type": "ui_chart",
+        "z": "22ccfb82.977e24",
+        "name": "",
+        "group": "1ceaa760.a70d79",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 820,
+        "y": 180,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "fd96e15.fe8c1a",
+        "type": "ui_chart",
+        "z": "22ccfb82.977e24",
+        "name": "",
+        "group": "8b39d558.5ebf78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Luftdruck",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 820,
+        "y": 220,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9db1fa13.12c4f8",
+        "type": "ui_chart",
+        "z": "22ccfb82.977e24",
+        "name": "",
+        "group": "8d1a5bea.8ea978",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatur",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 850,
+        "y": 260,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c7a1dfe1.738688",
+        "type": "ui_chart",
+        "z": "22ccfb82.977e24",
+        "name": "",
+        "group": "8d1a5bea.8ea978",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "CPU Temperatur",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 870,
+        "y": 300,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1ceaa760.a70d79",
+        "type": "ui_group",
+        "z": "",
+        "name": "Luftfeuchtigkeit",
+        "tab": "5a3310d9.4fbff",
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "8d1a5bea.8ea978",
+        "type": "ui_group",
+        "z": "",
+        "name": "Default",
+        "tab": "f4e7355d.efdaa8",
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "8b39d558.5ebf78",
+        "type": "ui_group",
+        "z": "",
+        "name": "Luftdruck",
+        "tab": "b5de50b3.fbfca",
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "5a3310d9.4fbff",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Luftfeuchtigkeit",
+        "icon": "dashboard"
+    },
+    {
+        "id": "f4e7355d.efdaa8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Temperatur",
+        "icon": "dashboard"
+    },
+    {
+        "id": "b5de50b3.fbfca",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Luftdruck",
+        "icon": "dashboard"
+    }
+]

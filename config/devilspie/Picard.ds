@@ -1,0 +1,14 @@
+; generated_rule Picard
+( if 
+( begin 
+( contains ( application_name ) "picard" )
+( contains ( window_name ) "Picard" )
+) 
+( begin 
+( maximize )
+( set_workspace 0 )
+( maximize_vertically )
+( maximize_horizontally )
+( println "match" )
+)
+)

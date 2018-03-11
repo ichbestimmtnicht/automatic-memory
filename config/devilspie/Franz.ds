@@ -1,0 +1,13 @@
+; generated_rule Franz
+( if 
+( begin 
+( is ( application_name ) "Franz" )
+) 
+( begin 
+( maximize )
+( set_workspace 1 )
+( maximize_vertically )
+( maximize_horizontally )
+( println "match" )
+)
+)

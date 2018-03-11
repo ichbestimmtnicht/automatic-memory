@@ -1,0 +1,40 @@
+#Kodi von Pipplware (Portugal)
+sudo nano /etc/apt/sources.list
+deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /
+
+wget -O - http://pipplware.pplware.pt/pipplware/key.asc | sudo apt-key add - 
+sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt install kodi kodi-pvr*
+sudo addgroup --system input
+
+sudo nano /etc/udev/rules.d/99-input.rules
+SUBSYSTEM==input, GROUP=input, MODE=0660
+KERNEL==tty[0-9]*, GROUP=tty, MODE=0660
+
+sudo nano /etc/udev/rules.d/10-permissions.rules
+#input
+KERNEL=="mouse|mice|event", MODE="0660", GROUP="input"
+KERNEL=="ts[0-9]|uinput", MODE="0660", GROUP="input"
+KERNEL==js[0-9], MODE=0660, GROUP=input
+#tty
+KERNEL==tty[0-9]*, MODE=0666
+#vchiq
+SUBSYSTEM==vchiq, GROUP=video, MODE=0660
+
+sudo usermod -a -G audio pi
+sudo usermod -a -G video pi
+sudo usermod -a -G input pi
+sudo usermod -a -G dialout pi
+sudo usermod -a -G plugdev pi
+sudo usermod -a -G tty pi
+
+#Autostartskript
+ sudo wget -O /etc/init.d/kodi https://gist.githubusercontent.com/shyamjos/60ea61fd8932fd5c868c80543b34f033/raw;sudo chmod +x /etc/init.d/kodi
+ sudo systemctl enable kodi
+
+# Plexmediaserver
+sudo apt install apt-transport-https -y --force-yes
+wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key  | sudo apt-key add -
+echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list
+sudo apt update
+sudo apt-get install -t jessie plexmediaserver -y
