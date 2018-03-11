@@ -10,7 +10,7 @@ sudo apt purge firefox-esr -y
 #Alacarte .Dekstop Editor
 sudo apt install alacarte -y
 #Guake Terminal Panel
-sudo apt install guake
+sudo apt install guake -y
 sudo apt install guake-indicator -y
 #An other shell
 sudo apt install zsh -y
@@ -32,3 +32,5 @@ sudo apt install telegram-desktop -y
 export DEBIAN_FRONTEND=noninteractive
 #Better Youtube
 sudo apt install -q -y rpi-chromium-mods
+#Autoremove
+sudo apt autoremove -y && sudo apt autolean -y

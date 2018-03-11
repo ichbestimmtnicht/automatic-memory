@@ -28,5 +28,5 @@ sudo apt install telegram-desktop -y
 export DEBIAN_FRONTEND=noninteractive
 #Better Youtube
 sudo apt install -y -q rpi-chromium-mods
-#reboot
-sudo reboot
+#Cleaning
+sudo apt autoremove -y && sudo apt autoclean -y
