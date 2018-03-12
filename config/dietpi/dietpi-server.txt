@@ -118,7 +118,7 @@ AUTO_SETUP_KEYBOARD_LAYOUT=de
 #		Option 1 = Copy your script to /boot/Automation_Custom_Script.sh and it will be executed automatically.
 #		Option 2 = Host your script online, then use AUTO_SETUP_CUSTOM_SCRIPT_EXEC=http://myweb.com/myscript.sh , it will be downloaded and executed automatically. | 0=disabled
 #		NB: Executed script log /var/tmp/dietpi/logs/dietpi-automation_custom_script.log
-AUTO_SETUP_CUSTOM_SCRIPT_EXEC=https://github.com/ichbestimmtnicht/automatic-memory/blob/master/config/dietpi/post-server.sh
+AUTO_SETUP_CUSTOM_SCRIPT_EXEC=https://raw.githubusercontent.com/ichbestimmtnicht/automatic-memory/master/config/dietpi/post-server.sh
 
 #------------------------------------------------------------------------------------------------------
 # D I E T - P I
