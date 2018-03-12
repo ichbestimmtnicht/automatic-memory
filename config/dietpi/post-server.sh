@@ -1,4 +1,5 @@
 #!bin/bash
+
 #Git
 sudo apt install git -y
 git config --global user.email "ichbestimmtnicht@users.noreply.github.com"
@@ -6,7 +7,7 @@ git config --global user.name "ichbestimmtnicht"
 #An other shell
 sudo apt install zsh -y
 #Change Defaul Shell to Zsh
-sudo chsh -s /usr/bin/zsh
+#sudo chsh -s /usr/bin/zsh
 #Prequisite for apt-key adv
 sudo apt install dirmngr -y
 #Debian Stretch Backport Keys
@@ -17,4 +18,4 @@ echo 'deb http://httpredir.debian.org/debian stretch-backports main contrib non-
 sudo apt update && sudo apt upgrade -y
 sudo apt autoremove -y
 #ohmyzsh Commandline Tool
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+####sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
