@@ -1,0 +1,10 @@
+#!/bin/bash
+#Requires Dirmngr
+sudo apt install dirmngr -y
+#Install Googledrive OCAML under raspbian stretch
+sudo touch /etc/apt/sources.list.d/alessandro-strada-ubuntu-ppa-bionic.list
+echo "deb http://ppa.launchpad.net/alessandro-strada/ppa/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/alessandro-strada-ubuntu-ppa-bionic.list
+echo "deb-src http://ppa.launchpad.net/alessandro-strada/ppa/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/alessandro-strada-ubuntu-ppa-bionic.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AD5F235DF639B041
+sudo apt update
+sudo apt install google-drive-ocamlfuse -y

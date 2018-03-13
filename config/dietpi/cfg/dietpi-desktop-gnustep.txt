@@ -17,20 +17,20 @@ AUTO_SETUP_NET_ETHERNET_ENABLED=1
 AUTO_SETUP_NET_WIFI_ENABLED=0
 
 #	Enter your Wifi details below, if applicable (Case Sensitive).
-AUTO_SETUP_NET_WIFI_SSID=MySuperDooperWiFi
+AUTO_SETUP_NET_WIFI_SSID=wlan2
 AUTO_SETUP_NET_WIFI_KEY=0123456789
 #	available | WPA-PSK / NONE | WEP=No longer supported
 AUTO_SETUP_NET_WIFI_KEYMGR=WPA-PSK
 
 #	Enter your Static Network details below, if applicable.
 AUTO_SETUP_NET_USESTATIC=0
-AUTO_SETUP_NET_STATIC_IP=192.168.0.100
+AUTO_SETUP_NET_STATIC_IP=192.168.178.100
 AUTO_SETUP_NET_STATIC_MASK=255.255.255.0
-AUTO_SETUP_NET_STATIC_GATEWAY=192.168.0.1
-AUTO_SETUP_NET_STATIC_DNS=8.8.8.8
+AUTO_SETUP_NET_STATIC_GATEWAY=192.168.178.1
+AUTO_SETUP_NET_STATIC_DNS=192.168.178.1
 
 #	Hostname
-AUTO_SETUP_NET_HOSTNAME=server-rawa
+AUTO_SETUP_NET_HOSTNAME=desktop-anja
 
 #	Force ethernet speeds
 #		NB: This is mainly aimed towards Pine A64's which may have a HW issue that causes unstable 1Gbit link.
@@ -62,20 +62,17 @@ AUTO_SETUP_GLOBAL_PASSWORD=random
 #	No limit on number entries, add as many as you need and uncomment the line.
 #	DietPi will automatically install all pre-reqs (eg: ALSA/XSERVER for desktops etc)
 #	- Examples:
-AUTO_SETUP_INSTALL_SOFTWARE_ID=91	#MySQL Database
-AUTO_SETUP_INSTALL_SOFTWARE_ID=5	#will install ALSA
-AUTO_SETUP_INSTALL_SOFTWARE_ID=42	#will install Plex Media Server
-AUTO_SETUP_INSTALL_SOFTWARE_ID=146	#Plexpy
-AUTO_SETUP_INSTALL_SOFTWARE_ID=73	#will install Fail 2 Ban
-AUTO_SETUP_INSTALL_SOFTWARE_ID=92	#Certbot
-#AUTO_SETUP_INSTALL_SOFTWARE_ID=93	#PiHole
-AUTO_SETUP_INSTALL_SOFTWARE_ID=157	#Home Assistant
-AUTO_SETUP_INSTALL_SOFTWARE_ID=153	#Octoprint
-AUTO_SETUP_INSTALL_SOFTWARE_ID=130	#Python
-AUTO_SETUP_INSTALL_SOFTWARE_ID=17	#Git
+AUTO_SETUP_INSTALL_SOFTWARE_ID=5	#Alsa
+AUTO_SETUP_INSTALL_SOFTWARE_ID=113	#Chromium
+#AUTO_SETUP_INSTALL_SOFTWARE_ID=132	#Aria2
+AUTO_SETUP_INSTALL_SOFTWARE_ID=26	#will install Desktop GNUStep
 AUTO_SETUP_INSTALL_SOFTWARE_ID=16	#Build Essentials
-AUTO_SETUP_INSTALL_SOFTWARE_ID=137	#CUPS Print Server
-AUTO_SETUP_INSTALL_SOFTWARE_ID=114	#Nexcloud
+AUTO_SETUP_INSTALL_SOFTWARE_ID=17	#Git
+AUTO_SETUP_INSTALL_SOFTWARE_ID=28	#VNC4 Server
+AUTO_SETUP_INSTALL_SOFTWARE_ID=69	#RPi.GPIO Python Library
+AUTO_SETUP_INSTALL_SOFTWARE_ID=70	#Wiring Pi GPIO C Library
+AUTO_SETUP_INSTALL_SOFTWARE_ID=130	#Python and PIP
+
 
 #	DietPi-Software Choice System
 #	SSH Server Selection:
@@ -88,7 +85,7 @@ AUTO_SETUP_SSH_SERVER_INDEX=-1
 #		0=none/manual
 #		-1=proftp
 #		-2=samba
-AUTO_SETUP_FILE_SERVER_INDEX=0
+AUTO_SETUP_FILE_SERVER_INDEX=-1
 
 #	Logging Mode Selection:
 #		0=none/manual
@@ -102,12 +99,12 @@ AUTO_SETUP_LOGGING_INDEX=-2
 #		0=Apache2
 #		-1=Nginx
 #		-2=Lighttpd
-AUTO_SETUP_WEB_SERVER_INDEX=0
+AUTO_SETUP_WEB_SERVER_INDEX=-2
 
 #	DietPi-Autostart | Requires AUTO_SETUP_AUTOMATED=1
 #	After installation is completed, which program should the system boot to?
 #		0=Console 7=Console+auto root login | 1=Kodi 2=Desktops (LXDE/MATE etc) 5=DietPi-Cloudshell 6=Uae4ARM (Fastboot) 8=Uae4ARM (standard boot) 9=dxx-rebirth
-AUTO_SETUP_AUTOSTART_TARGET_INDEX=0
+AUTO_SETUP_AUTOSTART_TARGET_INDEX=16
 
 #	Language/Regional settings | Requires AUTO_SETUP_AUTOMATED=1
 #		Timezone eg: Europe/London America/New_York | Full list (TZ*): https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -122,7 +119,7 @@ AUTO_SETUP_KEYBOARD_LAYOUT=de
 #		Option 1 = Copy your script to /boot/Automation_Custom_Script.sh and it will be executed automatically.
 #		Option 2 = Host your script online, then use AUTO_SETUP_CUSTOM_SCRIPT_EXEC=http://myweb.com/myscript.sh , it will be downloaded and executed automatically. | 0=disabled
 #		NB: Executed script log /var/tmp/dietpi/logs/dietpi-automation_custom_script.log
-AUTO_SETUP_CUSTOM_SCRIPT_EXEC=https://raw.githubusercontent.com/ichbestimmtnicht/automatic-memory/master/config/dietpi/post-server.sh
+AUTO_SETUP_CUSTOM_SCRIPT_EXEC=https://raw.githubusercontent.com/ichbestimmtnicht/automatic-memory/master/config/dietpi/post-desktop-gnustep.sh
 
 #------------------------------------------------------------------------------------------------------
 # D I E T - P I
@@ -132,7 +129,7 @@ AUTO_SETUP_CUSTOM_SCRIPT_EXEC=https://raw.githubusercontent.com/ichbestimmtnicht
 CONFIG_HDMI_OUTPUT=1
 
 #Cpu Governor | ondemand | powersave | performance | conservative
-CONFIG_CPU_GOVERNOR=ondemand
+CONFIG_CPU_GOVERNOR=perforemance
 CONFIG_CPU_USAGE_THROTTLE_UP=50
 
 #Limit the max cpu frequency (Mhz) for all cores. | Disabled=disabled | Useful for lowering temp/power usage on your device.
@@ -173,13 +170,13 @@ CONFIG_PROXY_USERNAME=
 CONFIG_PROXY_PASSWORD=
 
 #Delay boot until network is established: 0=disabled | 1=10 second wait max (default) | 2=infinite wait
-CONFIG_BOOT_WAIT_FOR_NETWORK=1
+CONFIG_BOOT_WAIT_FOR_NETWORK=0
 
 #DietPi check for updates (allows dietpi to check for updates on a daily basis and boot using a <1kb file download.)
 CONFIG_CHECK_DIETPI_UPDATES=1
 
 #NTPD Update Mode: 0=disabled | 1=boot only | 2=boot + daily | 3=boot + hourly | 4=Daemon + Drift
-CONFIG_NTP_MODE=3
+CONFIG_NTP_MODE=2
 
 #WiFi country code. 2 character value (eg GB US DE JP): https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 CONFIG_WIFI_COUNTRY_CODE=DE
@@ -221,18 +218,18 @@ SOFTWARE_VNCSERVER_WIDTH=1280
 SOFTWARE_VNCSERVER_HEIGHT=720
 SOFTWARE_VNCSERVER_DEPTH=16
 SOFTWARE_VNCSERVER_DISPLAY_INDEX=1
-SOFTWARE_VNCSERVER_SHARE_DESKTOP=0
+SOFTWARE_VNCSERVER_SHARE_DESKTOP=1
 
 #Optional username for ownCloud/Nextcloud admin account, default is 'admin'. Applied during installation.
 SOFTWARE_OWNCLOUD_NEXTCLOUD_USERNAME=ichbestimmtnicht
 
 #Optional data directory for ownCloud, default is '/mnt/dietpi_userdata/owncloud_data'. Applied during installation.
 #	This option is for advanced users. For full compatibility, please keep this options defaults, and, use dietpi-drive_manager to move the DietPi user data location.
-SOFTWARE_OWNCLOUD_DATADIR=/mnt/dietpi_userdata/owncloud
+SOFTWARE_OWNCLOUD_DATADIR=/mnt/dietpi_userdata/owncloud_data
 
 #Optional data directory for Nextcloud, default is '/mnt/dietpi_userdata/nextcloud_data'. Applied during installation.
 #	This option is for advanced users. For full compatibility, please keep this options defaults, and, use dietpi-drive_manager to move the DietPi user data location.
-SOFTWARE_NEXTCLOUD_DATADIR=/mnt/dietpi_userdata/nextcloud
+SOFTWARE_NEXTCLOUD_DATADIR=/mnt/dietpi_userdata/nextcloud_data
 
 #Wifi Hotspot
 SOFTWARE_WIFI_HOTSPOT_SSID=DietPi-HotSpot

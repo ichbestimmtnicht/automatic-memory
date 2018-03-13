@@ -37,5 +37,5 @@ sudo chsh -s /usr/bin/zsh
 #ohmyzsh Commandline Tool
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 #Get zsh configuration
-curl -o /home/dietpi/.zshrc https://raw.githubusercontent.com/ichbestimmtnicht/automatic-memory/master/config/zsh/zshrc-desktop.md
+curl -o /home/dietpi/.zshrc https://raw.githubusercontent.com/ichbestimmtnicht/automatic-memory/master/config/zsh/zshrc-desktop-mate.md
 sudo cp /home/dietpi/.zshrc /root/.zshrc
