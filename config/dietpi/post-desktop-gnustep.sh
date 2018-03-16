@@ -21,7 +21,7 @@ sudo apt install telegram-desktop -y
 #Dont ask for anything -q -y
 sudo DEBIAN_FRONTEND=noninteractive apt install -y -q rpi-chromium-mods
 #What did i just typed?
-sudo apt install python3-dev python3-pip
+sudo apt install python3-dev python3-pip -y
 pip3 install thefuck
 pip3 install thefuck --upgrade
 #An other shell

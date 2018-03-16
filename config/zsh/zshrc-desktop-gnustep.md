@@ -14,7 +14,7 @@ ZSH_THEME="random"
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-ZSH_THEME_RANDOM_CANDIDATES=( "af-magic" "afowler" "awesomepanda" "alanpeabody" "amuse" "arrow" "aussiegeek" "bira" "candy" "clean" "crunch" "darkblood" "dogenpung" "dpoggi" "gnzh" "juanghurtado" "junkfood" "mara" "mh" "miloshadzic" "mortalscumbag" "mrtazz" "muse" "nanotech" "rkj-repos" "simple" "smt" "sorin" "sporty_256" "steeef" "tjkirch" "tonotdo" "wedisagree" "ys"  )
+ZSH_THEME_RANDOM_CANDIDATES=( "af-magic" "afowler" "awesomepanda" "alanpeabody" "amuse" "arrow" "aussiegeek" "bira" "candy" "clean" "crunch" "darkblood" "dogenpung" "dpoggi" "gnzh" "juanghurtado" "junkfood" "mara" "mh" "miloshadzic" "mortalscumbag" "mrtazz" "muse" "nanotech" "rkj-repos" "simple" "sorin" "sporty_256" "steeef" "tjkirch" "tonotdo" "wedisagree" "ys"  )
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="false"

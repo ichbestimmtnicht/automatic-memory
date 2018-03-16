@@ -30,7 +30,7 @@ AUTO_SETUP_NET_STATIC_GATEWAY=192.168.178.1
 AUTO_SETUP_NET_STATIC_DNS=192.168.178.1
 
 #	Hostname
-AUTO_SETUP_NET_HOSTNAME=server-rawa
+AUTO_SETUP_NET_HOSTNAME=daphne
 
 #	Force ethernet speeds
 #		NB: This is mainly aimed towards Pine A64's which may have a HW issue that causes unstable 1Gbit link.
@@ -65,14 +65,14 @@ AUTO_SETUP_GLOBAL_PASSWORD=random
 AUTO_SETUP_INSTALL_SOFTWARE_ID=5	#will install ALSA
 AUTO_SETUP_INSTALL_SOFTWARE_ID=42	#will install Plex Media Server
 AUTO_SETUP_INSTALL_SOFTWARE_ID=146	#Plexpy
-AUTO_SETUP_INSTALL_SOFTWARE_ID=73	#will install Fail 2 Ban
+AUTO_SETUP_INSTALL_SOFTWARE_ID=90	#PHPMyAdmin
 AUTO_SETUP_INSTALL_SOFTWARE_ID=92	#Certbot
-AUTO_SETUP_INSTALL_SOFTWARE_ID=93	#PiHole
+#AUTO_SETUP_INSTALL_SOFTWARE_ID=93	#PiHole
 #AUTO_SETUP_INSTALL_SOFTWARE_ID=157	#Home Assistant
 AUTO_SETUP_INSTALL_SOFTWARE_ID=153	#Octoprint
 AUTO_SETUP_INSTALL_SOFTWARE_ID=130	#Python
 AUTO_SETUP_INSTALL_SOFTWARE_ID=17	#Git
-AUTO_SETUP_INSTALL_SOFTWARE_ID=16	#Build Essentials
+#AUTO_SETUP_INSTALL_SOFTWARE_ID=16	#Build Essentials
 #AUTO_SETUP_INSTALL_SOFTWARE_ID=137	#CUPS Print Server
 AUTO_SETUP_INSTALL_SOFTWARE_ID=114	#Nexcloud
 AUTO_SETUP_INSTALL_SOFTWARE_ID=113	#Chromium
@@ -95,7 +95,7 @@ AUTO_SETUP_FILE_SERVER_INDEX=0
 #		-1=ramlog 1h clear
 #		-2=ramlog 1h save clear
 #		-3=logrotate + rsyslog
-AUTO_SETUP_LOGGING_INDEX=-3
+AUTO_SETUP_LOGGING_INDEX=-2
 
 #	Webserver Preference Selection:
 #	NB: This will get ignored, if you have manually selected any WEBSERVER_Stack.
@@ -132,7 +132,7 @@ AUTO_SETUP_CUSTOM_SCRIPT_EXEC=https://raw.githubusercontent.com/ichbestimmtnicht
 CONFIG_HDMI_OUTPUT=1
 
 #Cpu Governor | ondemand | powersave | performance | conservative
-CONFIG_CPU_GOVERNOR=performance
+CONFIG_CPU_GOVERNOR=ondemand
 CONFIG_CPU_USAGE_THROTTLE_UP=50
 
 #Limit the max cpu frequency (Mhz) for all cores. | Disabled=disabled | Useful for lowering temp/power usage on your device.
@@ -173,7 +173,7 @@ CONFIG_PROXY_USERNAME=
 CONFIG_PROXY_PASSWORD=
 
 #Delay boot until network is established: 0=disabled | 1=10 second wait max (default) | 2=infinite wait
-CONFIG_BOOT_WAIT_FOR_NETWORK=2
+CONFIG_BOOT_WAIT_FOR_NETWORK=1
 
 #DietPi check for updates (allows dietpi to check for updates on a daily basis and boot using a <1kb file download.)
 CONFIG_CHECK_DIETPI_UPDATES=1
@@ -228,11 +228,11 @@ SOFTWARE_OWNCLOUD_NEXTCLOUD_USERNAME=ichbestimmtnicht
 
 #Optional data directory for ownCloud, default is '/mnt/dietpi_userdata/owncloud_data'. Applied during installation.
 #	This option is for advanced users. For full compatibility, please keep this options defaults, and, use dietpi-drive_manager to move the DietPi user data location.
-SOFTWARE_OWNCLOUD_DATADIR=/mnt/owncloud
+SOFTWARE_OWNCLOUD_DATADIR=/mnt/dietpi_userdata/owncloud
 
 #Optional data directory for Nextcloud, default is '/mnt/dietpi_userdata/nextcloud_data'. Applied during installation.
 #	This option is for advanced users. For full compatibility, please keep this options defaults, and, use dietpi-drive_manager to move the DietPi user data location.
-SOFTWARE_NEXTCLOUD_DATADIR=/mnt/nextcloud
+SOFTWARE_NEXTCLOUD_DATADIR=/mnt/dietpi_userdata/nextcloud
 
 #Wifi Hotspot
 SOFTWARE_WIFI_HOTSPOT_SSID=DietPi-HotSpot
